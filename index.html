@@ -1,0 +1,39 @@
+<body>
+    <h1 id="timer">
+    </h1>
+</body>
+<style>
+    body{
+        background: azure;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    h1 {
+        font-family: Arial, sans-serif;
+        font-size: 50px;
+        color: dimgrey;
+    }
+</style>
+<script>
+    function updateCountdown() {
+        const countdownDate = new Date("April 7, 2024 23:59:59 UTC+5").getTime();
+        const now = new Date().getTime();
+        const difference = countdownDate - now;
+
+        if (difference > 0) {
+            const hours = Math.floor(difference / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = 'До приборки комнаты: ' + hours + "h " + minutes + "m " + seconds + "s";
+        } else {
+            document.getElementById("timer").innerHTML = "Отчет опубликован!";
+        }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+</script>
